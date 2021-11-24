@@ -1,3 +1,5 @@
 package com.example.android.marsphotos.network
 
-data class MarsPhoto(val name: String, val flag: String)
+data class CountryPhoto(val error: Boolean, val msg: String, val data: List<Photo>)
+
+data class Photo(val name: String, val flag: String)

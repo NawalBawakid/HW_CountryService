@@ -20,9 +20,10 @@ private val retrofit = Retrofit.Builder()
 
 
 interface CountryApiService {
-    @GET("photos")
-    fun getPhotos(): List<MarsPhoto>
+      @GET("/api/v0.1/countries/flag/images")
+      suspend  fun getPhotos(): CountryPhoto
 }
+
 
 object CountryApi {
     val retrofitService : CountryApiService by lazy {
