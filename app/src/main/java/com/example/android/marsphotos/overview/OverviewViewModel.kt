@@ -21,6 +21,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.android.marsphotos.network.CountryApi
+import com.example.android.marsphotos.network.CountryPhoto
+import com.example.android.marsphotos.network.Photo
 import kotlinx.coroutines.launch
 
 
@@ -28,9 +30,12 @@ class OverviewViewModel : ViewModel() {
 
 
     private val _status = MutableLiveData<String>()
-
-
     val status: LiveData<String> = _status
+
+
+    private val _photos = MutableLiveData<List<CountryPhoto>>()
+    val photos: LiveData<List<CountryPhoto>> = _photos
+
 
 
     init {
@@ -41,8 +46,8 @@ class OverviewViewModel : ViewModel() {
     private fun getCountryPhotos() {
         viewModelScope.launch {
             try {
-                val listResult = CountryApi.retrofitService.getPhotos()
-                _status.value = "Success: ${listResult.data.size} Country photos retrieved"
+                _photos.value = listOf(CountryApi.retrofitService.getPhotos())
+                _status.value = "Success: Mars properties retrieved"
             } catch (e: Exception) {
                 _status.value = "Failure: ${e.message}"
             }
