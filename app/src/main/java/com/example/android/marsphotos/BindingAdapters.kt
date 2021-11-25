@@ -6,6 +6,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.android.marsphotos.network.CountryPhoto
+import com.example.android.marsphotos.network.Photo
 import com.example.android.marsphotos.overview.PhotoGridAdapter
 
 
@@ -21,7 +22,7 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
 }
 
 @BindingAdapter("listData")
-fun bindRecyclerView(recyclerView: RecyclerView, data: List<CountryPhoto>?) {
+fun bindRecyclerView(recyclerView: RecyclerView, data: List<Photo>?) {
     val adapter = recyclerView.adapter as PhotoGridAdapter
     adapter.submitList(data)
 }

@@ -6,14 +6,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.marsphotos.databinding.GridViewItemBinding
-import com.example.android.marsphotos.network.CountryPhoto
+import com.example.android.marsphotos.network.Photo
 
-class PhotoGridAdapter : ListAdapter<CountryPhoto, PhotoGridAdapter.CountryPhotoViewHolder>(DiffCallback) {
+class PhotoGridAdapter : ListAdapter<Photo, PhotoGridAdapter.CountryPhotoViewHolder>(DiffCallback) {
 
     class CountryPhotoViewHolder(private var binding: GridViewItemBinding): RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(countryPhoto: CountryPhoto) {
-            binding.photo = countryPhoto
+        fun bind(photo: Photo) {
+            binding.photo = photo
             binding.executePendingBindings()
         }
 
@@ -24,18 +24,18 @@ class PhotoGridAdapter : ListAdapter<CountryPhoto, PhotoGridAdapter.CountryPhoto
     }
 
     override fun onBindViewHolder(holder: PhotoGridAdapter.CountryPhotoViewHolder, position: Int) {
-        val countryPhoto = getItem(position)
-        holder.bind(countryPhoto)
+        val photo = getItem(position)
+        holder.bind(photo)
     }
 
 
-    companion object DiffCallback : DiffUtil.ItemCallback<CountryPhoto>() {
-        override fun areItemsTheSame(oldItem: CountryPhoto, newItem: CountryPhoto): Boolean {
-            return oldItem == newItem
+    companion object DiffCallback : DiffUtil.ItemCallback<Photo>() {
+        override fun areItemsTheSame(oldItem: Photo, newItem: Photo): Boolean {
+            return oldItem.name == newItem.name
         }
 
-        override fun areContentsTheSame(oldItem: CountryPhoto, newItem: CountryPhoto): Boolean {
-            return oldItem == newItem
+        override fun areContentsTheSame(oldItem: Photo, newItem: Photo): Boolean {
+            return oldItem.flag == newItem.flag
         }
     }
 }
