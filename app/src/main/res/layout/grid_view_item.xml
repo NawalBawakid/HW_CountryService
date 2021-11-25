@@ -23,7 +23,9 @@
         android:padding="2dp"
         app:imageUrl="@{photo.flag}"
         tools:src="@tools:sample/backgrounds/scenic"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
         android:id="@+id/countryName"
@@ -34,6 +36,9 @@
         android:text="@{photo.name}"
         android:padding="2dp"
         tools:src="@tools:sample/backgrounds/scenic"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@+id/flag_image"
+        app:layout_constraintStart_toStartOf="@+id/flag_image"
+        app:layout_constraintEnd_toEndOf="@+id/flag_image"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
